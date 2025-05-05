@@ -1,5 +1,7 @@
-//import Homefeom from "@/components/home/from";
+
+
 import Hometitle from "@/components/home/tilt";
+
 
 export default function HomePage(){
   return(
@@ -7,4 +9,4 @@ export default function HomePage(){
       <div className="w-full"><Hometitle/></div>
     </div>
   )
-}
+}//FIXME:link 

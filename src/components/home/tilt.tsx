@@ -1,12 +1,17 @@
 import { Button } from "../ui/button";
-
+import Link from "next/link";
+ 
 export default function Hometitle() {
     return (
         <div className="p-4">
             <div className="text-2xl text-gray-600 flex justify-between border-b-4 border-gray-500 mb-2">
                 <p className="font-bold text-black">notebook</p>
                 <div className="flex space-x-4 text-2xl font-bold">
-                    <div>button 1</div>
+                    <div className="">
+                        <Link href="/login/page">
+                            <Button variant="outline" className="text-2xl">登入</Button>
+                        </Link>                            
+                    </div>
                     <div>button 2</div>
                     <div>button 3</div>
                 </div>
@@ -28,4 +33,5 @@ export default function Hometitle() {
             </div>
         </div>
     );
-}//TODO：新增sidebar  與 button 
+}//TODO：新增sidebar 
+//FIXME: fix link
