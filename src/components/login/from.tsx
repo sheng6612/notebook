@@ -43,4 +43,4 @@ export default function Login() {
     </div>
     )
     
-}//FIXME: 修整card大小;
+}
