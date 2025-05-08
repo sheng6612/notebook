@@ -2,6 +2,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import Homecard from "./card";
  
+
 export default function Hometitle() {
     return (
         <div className="p-4">
@@ -37,4 +38,4 @@ export default function Hometitle() {
         </div>
     );
 }//TODO：新增sidebar 
-//FIXME: fix link
+//FIXME: homecard
