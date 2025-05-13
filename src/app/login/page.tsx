@@ -9,16 +9,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Input } from "../ui/input"
+import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export default function Login() {
     return (
     <div className="h-screen w-full bg-gradient-to-b from-slate-200 to-slate-500  flex justify-center items-center">
+      
       <Card className="w-full max-w-md ">
     <CardHeader>
-      <CardTitle>Login</CardTitle>
-      <CardDescription></CardDescription>
+      <CardTitle className="text-center text-2xl font-bold">Notebook</CardTitle>
+      <CardDescription>Login</CardDescription>
     </CardHeader>
     <CardContent>
       <form>
@@ -35,8 +37,10 @@ export default function Login() {
       </form>
     </CardContent>
     <CardFooter className="flex justify-between">
-      <Button variant="outline">return</Button>
-      <Button>Lonig</Button>
+      <Link href="/">
+        <Button variant="outline">return</Button>
+      </Link>
+      <Button>Lonig</Button> 
     </CardFooter>
   </Card>
 
