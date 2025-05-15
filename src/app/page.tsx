@@ -9,4 +9,4 @@ export default function HomePage(){
       <div className="w-full"><Hometitle/></div>
     </div>
   )
-}//FIXME:link 
+}
