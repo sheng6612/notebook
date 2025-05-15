@@ -19,8 +19,7 @@ interface CardData {
 
 const CardComponent = () => {
   const [cards, setCards] = useState<CardData[]>([
-    { id: 1, title: 'Card 1', description: 'Description 1' },
-    { id: 2, title: 'Card 2', description: 'Description 2' }
+    { id: 1, title: 'Card Name', description: 'Description 1' },
   ]);
   const [editingCardId, setEditingCardId] = useState<number | null>(null);
 
@@ -46,7 +45,7 @@ const CardComponent = () => {
 
   return (
     <div className="p-4">
-      <p className='text-3xl m'>備忘錄</p>
+      <p className='text-3xl m'>日記</p>
       <AddCard onSave={handleAddCard} />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

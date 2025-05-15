@@ -22,13 +22,14 @@ const AddCard: React.FC<AddCardProps> = ({ onSave }) => {
 
   return (
     <>
+      <div className='flex justify-start'>
       <button 
         onClick={() => setIsOpen(true)}
-        className="mb-4 px-4 py-2 bg-green-500 text-white rounded"
+        className="   mb-4 px-4 py-2 bg-green-500 text-white rounded"
       >
         Add Card
       </button>
-
+      </div>
       {isOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-lg shadow-md p-6 w-full max-w-md">
