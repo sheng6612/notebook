@@ -4,12 +4,17 @@ import React, { useState } from 'react';
 import {
     Card,
     CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
 import EditCard from './EditCard';
 import AddCard from './AddCard';
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
+} from "@/components/ui/context-menu"
 
 interface CardData {
   id: number;
@@ -39,15 +44,12 @@ const CardComponent = () => {
     setCards([...cards, newCard]);
   };
 
-  const deleteCard = (id: number) => {
-    setCards(cards.filter(card => card.id !== id));
-  };
-
   return (
-    <div className="p-4">
-      <p className='text-3xl m'>備忘錄</p>
-      <AddCard onSave={handleAddCard} />
-
+    <div className="p-4 h-screen w-full">
+      <div className='flex justify-between'>
+        <div className='text-3xl font-bold'>備忘錄</div>
+        <div className='flex  px-4'><AddCard onSave={handleAddCard} /></div>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {cards.map(card => (
           <div key={card.id}>
@@ -61,33 +63,22 @@ const CardComponent = () => {
                 />
               </div>
             )}
-            <div className={editingCardId === card.id ? 'opacity-25' : ''}>
-              <Card className="relative">
-                <CardHeader>
-                  <CardTitle>{card.title}</CardTitle>
-                  <CardDescription>{card.description}</CardDescription>
-                </CardHeader>
-                <CardFooter className="flex justify-end">
-                  <div className="space-x-2">
-                    <button
-                      onClick={() => setEditingCardId(card.id)}
-                      className="px-2 py-1 bg-blue-500 text-white rounded"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        deleteCard(card.id);
-                      }}
-                      className="px-2 py-1 bg-red-500 text-white rounded"
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </CardFooter>
-              </Card>
-            </div>
+              <ContextMenu>
+                <ContextMenuTrigger>
+                <Card className="relative">
+                  <CardHeader>
+                    <CardTitle>{card.title}</CardTitle>
+                    <CardDescription>{card.description}</CardDescription>
+                  </CardHeader>
+                </Card>
+                </ContextMenuTrigger>
+                <ContextMenuContent>
+                    <ContextMenuItem onClick={() => setEditingCardId(card.id)}>Edit</ContextMenuItem>
+                    <ContextMenuItem onClick={() => setCards(cards.filter(c => c.id !== card.id))}>Delete</ContextMenuItem>
+                    <ContextMenuItem>Move</ContextMenuItem>
+                    <ContextMenuItem>Subscription</ContextMenuItem>
+                </ContextMenuContent>
+              </ContextMenu>
           </div>
         ))}
       </div>
@@ -96,4 +87,4 @@ const CardComponent = () => {
 };
 
 export default CardComponent;
-//TODO:優化
+//TODO:加入時間選擇 卡片排版 優化 
