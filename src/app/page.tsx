@@ -5,10 +5,10 @@ import Link from "next/link";
 
 export default function HomePage(){
   return(
-    <div className=" h-screen w-full bg-gradient-to-b from-slate-200 to-slate-500">
+    <div className="p-4 h-screen w-full bg-gradient-to-b from-slate-200 to-slate-500">
        <div className="">
-            <div className="text-2xl text-gray-600 flex justify-between border-b-4  mb-2">
-                <div className="font-bold text-blak">notebook</div>
+            <div className="text-2xl text-gray-600 flex justify-between border-b-4  mb-4">
+                <div className="font-bold text-blak text-3xl">notebook</div>
                 <div className="flex space-x-4 text-2xl font-bold">
                     <div className="">
                         <Link href="/hook/login">

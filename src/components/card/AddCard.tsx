@@ -25,7 +25,7 @@ const AddCard: React.FC<AddCardProps> = ({ onSave }) => {
       <div className='flex justify-start'>
       <button 
         onClick={() => setIsOpen(true)}
-        className="   mb-4 px-4 py-2 bg-green-500 text-white rounded"
+        className="   mb-4 px-4 py-2 bg-green-500 text-white font-bold rounded"
       >
         Add Card
       </button>
