@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Homeindex from "./hook/home/page";
 
 export default function HomePage(){
   return(
@@ -28,7 +29,7 @@ export default function HomePage(){
                 </div>
             </div>
             <div className="">
-            <p className="text-4xl text-center">index</p>
+                <Homeindex/>
             </div>
         </div>
     </div>
