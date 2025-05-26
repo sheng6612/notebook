@@ -273,5 +273,5 @@ export default function IntegratedCardDrawingTool() {
     </div>
   );
 }
-//TODO::加入時間選擇
+//TODO::加入時間選擇 必且有動畫
 //FIXME:新增卡片 

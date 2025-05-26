@@ -1,5 +1,6 @@
+import Homeinex from "@/components/home/home_index"
 export default function Homeindex(){
         return (
-            <div><Homeindex/></div>
+            <div><Homeinex/></div>
         )
     }

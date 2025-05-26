@@ -3,3 +3,4 @@ export default function Homeindex() {
         <div></div>
     )
 }
+//index設計
