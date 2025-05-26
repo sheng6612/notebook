@@ -165,7 +165,7 @@ export default function IntegratedCardDrawingTool() {
           <AddCard onSave={handleAddCard}/>
         </div>
       </div>
-       
+      
       <div ref={containerRef} className="relative w-full h-[calc(100vh-100px)]">
         <canvas
           ref={canvasRef}
