@@ -31,8 +31,11 @@ export default function HomePage(){
             <div className="">
                 <Homeindex/>
             </div>
+            <div className="text-center">
+                <Link href="/Information_column/update" className="text-2xl ">Updata</Link>
+            </div>
         </div>
     </div>
   )
 }//TODO:button 設計
-//FIXME: card into div
+//FIXME: update 重新設計
