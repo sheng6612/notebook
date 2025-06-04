@@ -60,7 +60,7 @@ const AddCard: React.FC<AddCardProps> = ({ onSave }) => {
                     )}
                   >
                     <CalendarIcon className="mr-2 h-4 w-4" />
-                    {calendar_date ? format(calendar_date, "PPP") : <span>Pick a date</span>}
+                    {calendar_date ? format(calendar_date, "yyyy/MM/dd") : <span>Pick a date</span>}
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
