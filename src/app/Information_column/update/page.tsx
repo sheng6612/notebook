@@ -26,6 +26,7 @@ export default function Home() {
     .catch(err => {
       console.error('❌ 錯誤：', err)
     })
+    console.log(process.env.GITHUB_TOKEN) 
 }, [])
 
 
@@ -45,3 +46,5 @@ export default function Home() {
     </main>
   )
 }
+//TODO:UI優化
+//FIXME:介面重寫
