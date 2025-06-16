@@ -40,7 +40,9 @@ export default function Login() {
       <Link href="/">
         <Button variant="outline">return</Button>
       </Link>
-      <Button>Lonig</Button> 
+      <Link href="/">
+        <Button>Login</Button>
+      </Link>
     </CardFooter>
   </Card>
 
