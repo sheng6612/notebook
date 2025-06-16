@@ -18,7 +18,7 @@ export default function Home() {
     .then(res => res.json())
     .then(data => {
       if (Array.isArray(data)) {
-        setCommits(data.slice(0, 5))
+        setCommits(data.slice())
       } else {
         console.error('⚠️ 回傳不是陣列：', data)
       }
@@ -31,7 +31,7 @@ export default function Home() {
 
 
   return (
-    <main className="p-6">
+    <main className="p-6 h-full w-full bg-gradient-to-b from-slate-200 to-slate-500">
       <h1 className="text-2xl font-bold mb-4">📦 最新 Commits</h1>
       <ul className="space-y-2">
         {commits.map((c, i) => (
