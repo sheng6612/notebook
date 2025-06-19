@@ -142,4 +142,4 @@ export default function Journal(){
 }
 
 //TODO:加入時間選擇器 排版 右鍵選單
-//FIXME:Addcard
+
