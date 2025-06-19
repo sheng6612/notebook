@@ -1,5 +1,7 @@
 // app/page.tsx
 'use client'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 type Commit = {
@@ -32,8 +34,15 @@ export default function Home() {
 
   return (
     <main className="p-6 h-full w-full bg-gradient-to-b from-slate-200 to-slate-500">
-      <h1 className="text-2xl font-bold mb-4">📦 最新 Commits</h1>
-      <ul className="space-y-2">
+      <div className='flex justify-between mb-2'>
+        <h1 className="text-2xl font-bold mb-4">📦 最新 Commits</h1>
+        <div className='flex px-4 space-x-4'>
+          <Link href="/">
+            <Button variant="ghost" className='text-2xl font-mono'>返回</Button>
+          </Link>
+        </div>
+      </div>
+          <ul className="space-y-2">
         {commits.map((c, i) => (
           <li key={i} className="border-b pb-2">
             <div className="font-mono">{c.commit.message}</div>
