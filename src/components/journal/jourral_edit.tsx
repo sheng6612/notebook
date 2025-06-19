@@ -32,11 +32,17 @@ const EditCard: React.FC<EditCardProps> = ({
   const [description, setDescription] = useState(initialDescription);
   const [calendar_date, setCalendar_date] = useState<Date>(new Date(initiaCalendar_date));
 
-  const handleSave = () => {
-    if (title.trim() && description.trim() && calendar_date) {
-      onSave(title, description, calendar_date.toISOString());
-    }
-  };
+const handleSave = () => {
+  if (title.trim() && description.trim() && calendar_date) {
+    const formattedDate = format(calendar_date, "yyyy/MM/dd"); // 沒有秒數與毫秒
+    onSave(title, description, formattedDate);
+   
+    setTitle('');
+    setDescription('');
+    
+  }
+};
+
 
   return (
     <div className="bg-white rounded-lg shadow-md p-6">

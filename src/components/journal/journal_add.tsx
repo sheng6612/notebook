@@ -25,15 +25,17 @@ const AddCard: React.FC<AddCardProps> = ({ onSave }) => {
   const[calendar_date,setCalendar_date]=React.useState<Date>()
   
 
-  const handleSave = () => {
-    if (title.trim() && description.trim() && calendar_date){ 
-      onSave(title, description, calendar_date.toISOString());
-      setIsOpen(false);
-      setTitle('');
-      setDescription('');
-      setCalendar_date(calendar_date);
-    }
-  };
+ const handleSave = () => {
+  if (title.trim() && description.trim() && calendar_date) {
+    const formattedDate = format(calendar_date, "yyyy/MM/dd"); // 沒有秒數與毫秒
+    onSave(title, description, formattedDate);
+    setIsOpen(false);
+    setTitle('');
+    setDescription('');
+    setCalendar_date(undefined);
+  }
+};
+
 
   return (
     <>
