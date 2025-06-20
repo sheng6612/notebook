@@ -140,16 +140,17 @@ export default function IntegratedCardDrawingTool() {
   };
 
   const handleAddCard = (title: string, description: string) => {
-    const container = containerRef.current;
-    const newCard = {
-      id: Date.now(),
-      title,
-      description,
-      x: container ? container.offsetWidth / 2 - 100 : 200,
-      y: container ? container.offsetHeight / 2 - 50 : 150
-    };
-    setCards([...cards, newCard]);
+  const container = containerRef.current;
+  const offset = cards.length * 20; // 為了避免重疊
+  const newCard = {
+    id: Date.now(),
+    title,
+    description,
+    x: (container ? container.offsetWidth / 2 : 200) - 100 + offset,
+    y: (container ? container.offsetHeight / 2 : 150) - 50 + offset
   };
+  setCards([...cards, newCard]);
+};
 
   return (
     <div className="p-4 h-screen w-full bg-gradient-to-b from-slate-200 to-slate-500">
@@ -169,7 +170,7 @@ export default function IntegratedCardDrawingTool() {
       <div ref={containerRef} className="relative w-full h-[calc(100vh-100px)]">
         <canvas
           ref={canvasRef}
-          className="absolute top-0 left-0 w-full h-full z-0"
+          className="absolute top-0 left-0 w-full h-full ${isDrawMode ? 'z-0' : 'pointer-events-none z-0'"
           onMouseDown={startDrawing}
           onMouseMove={draw}
           onMouseUp={stopDrawing}

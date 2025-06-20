@@ -31,7 +31,7 @@ const AddCard: React.FC<AddCardProps> = ({ onSave }) => {
       </button>
       </div>
       {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-30">
           <div className="bg-white rounded-lg shadow-md p-6 w-full max-w-md">
             <h2 className="text-xl font-semibold mb-4">Add New Card</h2>
             <div className="space-y-4">
