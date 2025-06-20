@@ -40,7 +40,7 @@ interface CardData {
 export default function Journal(){
 
     const [cards, setCards] = useState<CardData[]>([
-        { id: 1,Calendar_date:'114/4/3',title: 'Card Name', description: 'Description 1' },
+        { id: 1,Calendar_date :  format(new Date(), 'yyyy/MM/dd'),title: 'Card Name', description: 'Description 1' },
       ]);
     const [editingCardId, setEditingCardId] = useState<number | null>(null);
     const [calendar_date, setCalendar_date] = useState<Date | undefined>(undefined);
@@ -96,11 +96,11 @@ export default function Journal(){
 
                         </div>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+            <div className='flex overflow-x-auto space-x-4'>
                 {cards.map(card => (
                 <div key={card.id}>
                     {editingCardId === card.id && (
-                    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+                    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center ">
                         <EditCard
                         initialTitle={card.title}
                         initialDescription={card.description}
@@ -142,4 +142,4 @@ export default function Journal(){
 }
 
 //TODO:加入時間選擇器 排版 右鍵選單
-
+//FIXME:Addcard
