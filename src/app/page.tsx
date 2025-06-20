@@ -31,11 +31,12 @@ export default function HomePage(){
             <div className="">
                 <Homeindex/>
             </div>
-            <div className="text-center">
+            <div className=" flex justify-center   underline decoration-sky-500 ">
                 <Link href="/Information_column/update" className="text-2xl ">Updata</Link>
+                <Link href="/Information_column/news" className="text-2xl ml-2">News</Link>
             </div>
         </div>
     </div>
   )
-}//TODO:button 設計 Update反白
-//FIXME: update 重新設計
+}//TODO:button 設計 
+//FIXME:  重新設計
