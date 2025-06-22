@@ -68,5 +68,6 @@ export async function fetchAllNews(): Promise<NewsItem[]> {
 // 儲存成 JSON 檔（可接到 PM2 定時任務）
 fetchAllNews().then(news => {
   fs.writeFileSync('./news.json', JSON.stringify(news, null, 2))
-  console.log(`✅ 已抓取 ${news.length} 則新聞`)
+  console.log(`[${new Date().toLocaleTimeString()}]✅ 已抓取 ${news.length} 則新聞`)
 })
+//TODO:測試刷新

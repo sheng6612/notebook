@@ -44,9 +44,9 @@ export default function Home() {
       </div>
           <ul className="space-y-2">
         {commits.map((c, i) => (
-          <li key={i} className="border-b pb-2">
+          <li key={i} className="p-3 bg-stone-300 rounded shadow">
             <div className="font-mono">{c.commit.message}</div>
-            <div className="text-sm text-gray-500">
+            <div  className="text-sm text-gray-500">
               by {c.commit.author.name} @ {new Date(c.commit.author.date).toLocaleString()}
             </div>
           </li>
