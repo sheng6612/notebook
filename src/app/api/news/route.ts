@@ -1,27 +1,11 @@
-import axios from 'axios'
-import * as cheerio from 'cheerio'
+import { NextResponse } from 'next/server'
+import fs from 'fs'
 
-async function fetchNews() {
-  console.log(`[${new Date().toLocaleString()}] 開始爬取 UDN 新聞...`)
+export async function GET() {
   try {
-    const { data } = await axios.get('https://udn.com/news/breaknews/1')
-    const $ = cheerio.load(data)
-    const headlines: string[] = []
-
-    $('.story__headline').each((_, el) => {
-      const title = $(el).text().trim()
-      if (title) headlines.push(title)
-    })
-
-    console.log(`✅ 共抓到 ${headlines.length} 則新聞`)
-    console.log(headlines.slice(0, 5)) // 只列前 5 筆
-  } catch (err: any) {
-    console.error(`❌ 錯誤：${err.message}`)
+    const data = JSON.parse(fs.readFileSync('./news.json', 'utf-8'))
+    return NextResponse.json({ news: data })
+  } catch {
+    return NextResponse.json({ news: [] }, { status: 500 })
   }
 }
-
-// 每 5 分鐘執行一次
-setInterval(fetchNews, 5 * 60 * 1000)
-
-// 立即執行一次
-fetchNews()
