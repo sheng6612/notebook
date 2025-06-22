@@ -1,4 +1,6 @@
 'use client'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 import { useState, useEffect } from 'react'
 
 type NewsItem = {
@@ -24,7 +26,15 @@ export default function Home() {
 
   return (
     <div className="p-6 bg-slate-300">
-      <h1 className="text-3xl font-mono mb-4">news</h1>
+      <div className='flex justify-between mb-2'>
+        <h1 className="text-3xl font-mono mb-4">news</h1>
+        <div className='lex px-4 space-x-4'>
+          <Link href="/">
+            <Button variant="ghost"className='text-2xl font-mono'>返回</Button>
+          </Link>
+        </div>
+      </div>
+      
       <ul className="space-y-2">
         {news.map((item, idx) => (
           <li key={idx} className="bg-white p-3 rounded shadow">
@@ -38,3 +48,4 @@ export default function Home() {
     </div>
   )
 }
+//TODO:測試刷新
