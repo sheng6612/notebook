@@ -65,9 +65,17 @@ export async function fetchAllNews(): Promise<NewsItem[]> {
   return all
 }
 
-// 儲存成 JSON 檔（可接到 PM2 定時任務）
-fetchAllNews().then(news => {
-  fs.writeFileSync('.//news.json', JSON.stringify(news, null, 2))
-  console.log(`[${new Date().toLocaleTimeString()}]✅ 已抓取 ${news.length} 則新聞`)
-})
-//TODO:測試刷新
+async function runCrawler() {
+  try {
+    const news = await fetchAllNews()
+    fs.writeFileSync('./news.json', JSON.stringify(news, null, 2))
+    console.log(`[${new Date().toLocaleString()}] ✅ 已抓取 ${news.length} 則新聞`)
+  } catch (err) {
+    console.error(`[${new Date().toLocaleString()}] ❌ 抓取失敗`, err)
+  }
+}
+// ✅ 一開始先抓一次
+runCrawler()
+
+// ✅ 每 5 分鐘定時抓取一次
+setInterval(runCrawler, 1 * 60 * 1000)
