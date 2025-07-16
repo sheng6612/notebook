@@ -1,4 +1,3 @@
-
 import axios from 'axios'
 import * as cheerio from 'cheerio'
 import fs from 'fs'
@@ -51,30 +50,55 @@ async function fetchCNA(): Promise<NewsItem[]> {
   $('.mainList li a').each((_, el) => {
     const title = $(el).text().trim()
     const link = 'https://www.cna.com.tw' + $(el).attr('href')
-    const time = new Date().toLocaleString() // CNA 沒有時間，手動補
+    const time = new Date().toLocaleString()
     if (title) news.push({ title, time, link, source: 'CNA' })
   })
 
   return news
 }
 
-export async function fetchAllNews(): Promise<NewsItem[]> {
-  const [et, ltn, cna] = await Promise.all([fetchETtoday(), fetchLTN(), fetchCNA()])
-  const all = [...et, ...ltn, ...cna]
-  all.sort((a, b) => b.time.localeCompare(a.time)) // 時間排序（可優化）
-  return all
+async function fetchAllNews(): Promise<NewsItem[]> {
+  const [et, ltn, cna] = await Promise.all([
+    fetchETtoday(),
+    fetchLTN(),
+    fetchCNA()
+  ])
+  return [...et, ...ltn, ...cna]
+}
+
+function mergeNews(newData: NewsItem[], existingData: NewsItem[]): NewsItem[] {
+  const combined = [...newData, ...existingData]
+  const seen = new Set<string>()
+  return combined.filter(item => {
+    if (seen.has(item.link)) return false
+    seen.add(item.link)
+    return true
+  })
 }
 
 async function runCrawler() {
   try {
-    const news = await fetchAllNews()
-    fs.writeFileSync('./news.json', JSON.stringify(news, null, 2))
-    console.log(`[${new Date().toLocaleString()}] ✅ 已抓取 ${news.length} 則新聞`)
+    const newNews = await fetchAllNews()
+
+    // 讀取舊資料（如果有）
+    let oldNews: NewsItem[] = []
+    const path = './news.json'
+    if (fs.existsSync(path)) {
+      const raw = fs.readFileSync(path, 'utf-8')
+      oldNews = JSON.parse(raw)
+    }
+
+    const mergedNews = mergeNews(newNews, oldNews)
+
+    // 時間排序（從新到舊）
+    mergedNews.sort((a, b) => b.time.localeCompare(a.time))
+
+    fs.writeFileSync(path, JSON.stringify(mergedNews, null, 2))
+    console.log(`[${new Date().toLocaleString()}] ✅ 新增 ${newNews.length} 筆，總數 ${mergedNews.length} 筆`)
   } catch (err) {
     console.error(`[${new Date().toLocaleString()}] ❌ 抓取失敗`, err)
   }
 }
-// ✅ 一開始先抓一次
 runCrawler()
 
 // ✅ 每 5 分鐘定時抓取一次
