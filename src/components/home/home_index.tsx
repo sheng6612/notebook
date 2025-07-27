@@ -1,7 +1,11 @@
+import { Calendar } from "../ui/calendar"
 
 export default function Homeindex() {
     return (
-        <div></div>
+        <div>
+            <div><Calendar/></div>
+            <div></div>
+        </div>
     )
 }
-//index設計
+//index 加入日曆
