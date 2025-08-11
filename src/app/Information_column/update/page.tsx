@@ -36,6 +36,7 @@ export default function Home() {
     <main className="p-6 h-full w-full bg-slate-300 ">
       <div className='flex justify-between mb-2'>
         <h1 className="text-2xl font-bold mb-4">📦 最新 Commits</h1>
+        
         <div className='flex px-4 space-x-4'>
           <Link href="/">
             <Button variant="ghost" className='text-2xl font-mono'>返回</Button>

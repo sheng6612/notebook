@@ -1,10 +1,11 @@
-import { Calendar } from "../ui/calendar"
+import Home_table from "../table/home_table"
+
 
 export default function Homeindex() {
     return (
-        <div>
-            <div><Calendar/></div>
-            <div></div>
+        <div className=" ">
+            
+            <div className=""><Home_table/></div>
         </div>
     )
 }

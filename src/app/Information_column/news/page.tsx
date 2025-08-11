@@ -32,6 +32,7 @@ export default function Home() {
           <Link href="/">
             <Button variant="ghost"className='text-2xl font-mono'>返回</Button>
           </Link>
+          <div></div>
         </div>
       </div>
       
@@ -48,4 +49,5 @@ export default function Home() {
     </div>
   )
 }
-//TODO:測試刷新
+//TODO:增加多比資料
+//FIXME:介面選單
