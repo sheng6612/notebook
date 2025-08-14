@@ -23,7 +23,7 @@ export default function HomePage(){
                     </div>
                     <div>
                         <Link href="/hook/card">
-                            <Button variant="outline" className="text-2xl font-bold">備忘錄</Button>
+                            <Button variant="outline" className="text-2xl font-bold">白板</Button>
                         </Link>
                     </div>
                     <div>
