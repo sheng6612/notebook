@@ -37,7 +37,6 @@ export default function HomePage(){
                 <Homeindex/>
             </div>
             <div className=" flex justify-center   underline decoration-sky-500 ">
-                <Link href="/Information_column/update" className="text-2xl ">Updata</Link>
                 <Link href="/Information_column/news" className="text-2xl ml-2">News</Link>
             </div>
         </div>

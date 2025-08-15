@@ -63,7 +63,14 @@ export default function Login() {
     })
 
     if (foundUser) {
-      router.push("/")
+      if (role=="admin"){
+        window.open("./errorpage","_blank")
+        router.push("/")
+      }
+      else 
+        {
+          router.push("/")
+        }
     } else {
       setError("帳號或密碼錯誤")
     }
